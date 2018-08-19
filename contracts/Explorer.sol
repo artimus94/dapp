@@ -22,11 +22,11 @@ contract Explorer {
         owner = msg.sender;
     }
     
-    function addProduct(address _product_address, string _name, string _kings_name) public {
+    function addProduct(address _product_address, string _name, string _source_name) public {
         // creating a temp struct first
         Product memory newProduct;
         newProduct.name = _name;
-        newProduct.source_name = _kings_name;
+        newProduct.source_name = _source_name;
 
         // saving struct into the `products` mapping
         products[_product_address] = newProduct;
@@ -44,11 +44,11 @@ contract Explorer {
         _product.ingredientsArray.push(_ingredients_address);
     }
 
-    function getDestrictLength(address _product_address) public view returns (uint256) {
+    function getIngredientLength(address _product_address) public view returns (uint256) {
         return products[_product_address].ingredientsArray.length;
     }
 
-    function getDestrict(address _product_address, uint256 _index) public view returns (address) {
+    function getIngredient(address _product_address, uint256 _index) public view returns (address) {
         return products[_product_address].ingredientsArray[_index];
     }
 
